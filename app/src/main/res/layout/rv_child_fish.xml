@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="8dp"
+    android:layout_marginBottom="16dp">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorFishBG"
+        android:paddingBottom="4dp">
+
+    <ImageView
+        android:id="@+id/iv_fish_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="12dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_fish_name"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/iv_fish_img"
+        android:paddingTop="36dp"
+        android:textSize="26sp" />
+
+    <TextView
+        android:id="@+id/tv_fish_sellprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_fish_img"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="150dp"
+        android:padding="8dp"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/iv_fish_bellsicon"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_below="@id/iv_fish_img"
+        android:layout_toEndOf="@id/tv_fish_sellprice"
+        android:padding="12dp"
+        android:src="@drawable/bells" />
+
+    <CheckBox
+        android:id="@+id/fishCheckBox"
+        android:layout_width="48dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/tv_fish_time"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_fish_img"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/tv_fish_shadow"
+        android:layout_below="@id/tv_fish_time"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"/>
+
+
+    <TextView
+        android:id="@+id/tv_fish_location"
+        android:layout_below="@id/tv_fish_shadow"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/tv_fish_jan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="43dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/jan"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fish_feb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="11dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/feb"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fish_mar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="-31dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/mar"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fish_apr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="51dp"
+            android:layout_marginEnd="43dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/apr"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fish_may"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="51dp"
+            android:layout_marginEnd="11dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/may"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fish_june"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="51dp"
+            android:layout_marginEnd="-31dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/jun"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fish_july"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="43dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/jul"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fish_aug"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="11dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/aug"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fish_sep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="-31dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/sep"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fish_oct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="77dp"
+            android:layout_marginEnd="43dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/oct"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fish_nov"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="77dp"
+            android:layout_marginEnd="11dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/nov"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fish_dec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fishCheckBox"
+            android:layout_marginTop="77dp"
+            android:layout_marginEnd="-31dp"
+            android:layout_toStartOf="@+id/fishCheckBox"
+            android:text="@string/dec"
+            android:textSize="12sp" />
+
+</RelativeLayout>
+
+    </androidx.cardview.widget.CardView>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_fossils">
+
+    <fragment
+        android:id="@+id/navigation_fossils"
+        android:name="com.mikec.achnchecklistguide.FossilFragment"
+        android:label="@string/title_fossils"
+        tools:layout="@layout/fragment_fossils" />
+
+    <fragment
+        android:id="@+id/navigation_bugs"
+        android:name="com.mikec.achnchecklistguide.BugFragment"
+        android:label="@string/title_bugs"
+        tools:layout="@layout/fragment_bugs" />
+
+    <fragment
+        android:id="@+id/navigation_fish"
+        android:name="com.mikec.achnchecklistguide.FishFragment"
+        android:label="@string/title_fish"
+        tools:layout="@layout/fragment_fish" />
+</navigation>
