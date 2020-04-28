@@ -1,24 +1,18 @@
 package com.mikec.achnchecklistguide
 
 import android.app.AlertDialog
-import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.database.sqlite.SQLiteException
-import android.graphics.Paint
 import android.os.Bundle
 import android.view.*
-import android.widget.CheckBox
-import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_fossils.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,8 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_fossils, R.id.navigation_bugs, R.id.navigation_fish))
+//        val appBarConfiguration = AppBarConfiguration(setOf(
+//                R.id.navigation_fossils, R.id.navigation_bugs, R.id.navigation_fish))
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         setSupportActionBar(findViewById(R.id.my_toolbar))
         navView.setupWithNavController(navController)
@@ -95,7 +89,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                Toast.makeText(applicationContext,"Implement popup with settings options", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_about -> {
+                val intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
     }
 
     fun replaceFragment(fragment: Fragment){

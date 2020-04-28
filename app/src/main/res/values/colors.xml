@@ -6,5 +6,7 @@
     <color name="colorFishBG">#c8e4e4</color>
     <color name="colorFossilBG">#d8bd9a</color>
     <color name="colorBugBG">#EDE3F7</color>
+    <color name="colorACMenu">#58BCA8</color>
+    <color name="colorAboutSky">#002973</color>
 
 </resources>
