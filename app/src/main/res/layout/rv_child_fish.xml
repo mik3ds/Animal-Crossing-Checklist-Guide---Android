@@ -133,7 +133,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_fish_june"
+            android:id="@+id/tv_fish_jun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fishCheckBox"
@@ -144,7 +144,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_fish_july"
+            android:id="@+id/tv_fish_jul"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fishCheckBox"

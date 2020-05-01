@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,200 +8,208 @@
     app:cardCornerRadius="8dp"
     android:layout_marginBottom="16dp">
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorBugBG"
         android:paddingBottom="4dp">
 
 
-    <ImageView
-        android:id="@+id/iv_bug_img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:padding="12dp"
-        android:layout_marginStart="20dp"/>
-
-    <TextView
-        android:id="@+id/tv_bug_name"
-        android:layout_width="183dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@id/iv_bug_img"
-        android:paddingTop="36dp"
-        android:textSize="26sp" />
-
-    <TextView
-        android:id="@+id/tv_bug_sellprice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_bug_img"
-        android:layout_marginTop="0dp"
-        android:layout_marginStart="150dp"
-        android:padding="8dp"
-        android:textSize="20sp" />
-
-    <ImageView
-        android:id="@+id/iv_bug_bellsicon"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_below="@id/iv_bug_img"
-        android:layout_toEndOf="@id/tv_bug_sellprice"
-        android:padding="12dp"
-        android:src="@drawable/bells" />
-
-    <CheckBox
-        android:id="@+id/bugCheckBox"
-        android:layout_width="48dp"
-        android:layout_height="60dp"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:id="@+id/tv_bug_time"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/iv_bug_img"
-        android:textAlignment="center"/>
-
-    <TextView
-        android:id="@+id/tv_bug_location"
-        android:layout_below="@id/tv_bug_time"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"/>
+        <ImageView
+            android:id="@+id/iv_bug_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:padding="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_bug_jan"
+            android:id="@+id/tv_bug_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="38dp"
-            android:layout_marginEnd="43dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
-            android:text="@string/jan"
-            android:textSize="12sp" />
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="188dp"
+            android:paddingTop="18dp"
+            android:paddingEnd="10dp"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toStartOf="@+id/bugCheckBox"
+            app:layout_constraintStart_toEndOf="@+id/iv_bug_img"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_bug_feb"
+            android:id="@+id/tv_bug_sellprice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="38dp"
-            android:layout_marginEnd="11dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
-            android:text="@string/feb"
-            android:textSize="12sp" />
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="1dp"
+            android:padding="4dp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/iv_bug_bellsicon"
+            app:layout_constraintStart_toEndOf="@+id/tv_bug_time"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bug_name" />
+
+        <ImageView
+            android:id="@+id/iv_bug_bellsicon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="6dp"
+            android:padding="12dp"
+            android:src="@drawable/bells"
+            app:layout_constraintStart_toEndOf="@+id/tv_bug_sellprice"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bug_name" />
+
+        <CheckBox
+            android:id="@+id/bugCheckBox"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="40dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_bug_mar"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_bug_time"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="38dp"
-            android:layout_marginEnd="-31dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
-            android:text="@string/mar"
-            android:textSize="12sp" />
+            android:layout_marginTop="1dp"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_bug_img" />
 
-        <TextView
-            android:id="@+id/tv_bug_apr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="51dp"
-            android:layout_marginEnd="43dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
-            android:text="@string/apr"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_bug_may"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="51dp"
-            android:layout_marginEnd="11dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
-            android:text="@string/may"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_bug_june"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="51dp"
-            android:layout_marginEnd="-31dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
-            android:text="@string/jun"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_bug_july"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="43dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
-            android:text="@string/jul"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_bug_aug"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="11dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
-            android:text="@string/aug"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_bug_sep"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="-31dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
-            android:text="@string/sep"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_bug_oct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="77dp"
-            android:layout_marginEnd="43dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
-            android:text="@string/oct"
-            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_bug_nov"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="77dp"
-            android:layout_marginEnd="11dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="4dp"
             android:text="@string/nov"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bug_dec" />
+
+        <TextView
+            android:id="@+id/tv_bug_jan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="1dp"
+            android:text="@string/jan"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bug_apr"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bug_feb" />
+
+        <TextView
+            android:id="@+id/tv_bug_feb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:text="@string/feb"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bug_may"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bug_mar" />
+
+        <TextView
+            android:id="@+id/tv_bug_jun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/jun"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bug_sep"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_bug_may"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="1dp"
+            android:text="@string/may"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bug_aug"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bug_jun" />
+
+        <TextView
+            android:id="@+id/tv_bug_apr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="1dp"
+            android:text="@string/apr"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bug_jul"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bug_may" />
+
+        <TextView
+            android:id="@+id/tv_bug_mar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/mar"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bug_jun"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_bug_oct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/oct"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bug_nov" />
+
+        <TextView
+            android:id="@+id/tv_bug_sep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/sep"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bug_dec"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_bug_jul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:text="@string/jul"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bug_oct"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bug_aug" />
+
+        <TextView
+            android:id="@+id/tv_bug_aug"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:text="@string/aug"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bug_nov"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bug_sep" />
 
         <TextView
             android:id="@+id/tv_bug_dec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bugCheckBox"
-            android:layout_marginTop="77dp"
-            android:layout_marginEnd="-31dp"
-            android:layout_toStartOf="@+id/bugCheckBox"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
             android:text="@string/dec"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_bug_location"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bug_time" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

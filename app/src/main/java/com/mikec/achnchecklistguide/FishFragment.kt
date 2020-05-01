@@ -90,6 +90,18 @@ class FishFragment : Fragment() {
             val fishTime : TextView = v.findViewById(R.id.tv_fish_time)
             val fishShadow : TextView = v.findViewById(R.id.tv_fish_shadow)
             val fishLocation : TextView = v.findViewById(R.id.tv_fish_location)
+            val fishJan: TextView = v.findViewById(R.id.tv_fish_jan)
+            val fishFeb: TextView = v.findViewById(R.id.tv_fish_feb)
+            val fishMar: TextView = v.findViewById(R.id.tv_fish_mar)
+            val fishApr: TextView = v.findViewById(R.id.tv_fish_apr)
+            val fishMay: TextView = v.findViewById(R.id.tv_fish_may)
+            val fishJun: TextView = v.findViewById(R.id.tv_fish_jun)
+            val fishJul: TextView = v.findViewById(R.id.tv_fish_jul)
+            val fishAug: TextView = v.findViewById(R.id.tv_fish_aug)
+            val fishSep: TextView = v.findViewById(R.id.tv_fish_sep)
+            val fishOct: TextView = v.findViewById(R.id.tv_fish_oct)
+            val fishNov: TextView = v.findViewById(R.id.tv_fish_nov)
+            val fishDec: TextView = v.findViewById(R.id.tv_fish_dec)
 
 
         }

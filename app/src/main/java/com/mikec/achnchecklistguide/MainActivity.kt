@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private val PREF_FIRST = "mikec.acnh.firstrun"
     private val PREF_HEM = "mikec.acnh.hemisphere"
 
-    lateinit var dbHandler: DBHandler
+     lateinit var dbHandler: DBHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +28,52 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-//        val appBarConfiguration = AppBarConfiguration(setOf(
-//                R.id.navigation_fossils, R.id.navigation_bugs, R.id.navigation_fish))
-//        setupActionBarWithNavController(navController, appBarConfiguration)
         setSupportActionBar(findViewById(R.id.my_toolbar))
         navView.setupWithNavController(navController)
+        val sharedPref: SharedPreferences = getSharedPreferences(PREF_FIRST, PRIVATE_MODE)
 
+        println("sharedPref here")
+        println(sharedPref.getBoolean(PREF_FIRST, true))
+
+        if (sharedPref.getBoolean(PREF_FIRST, true)) {
+            println("fuck")
+
+            dbHandler = DBHandler(this)
+
+            try {
+                dbHandler.createTables()
+            } catch (e:SQLiteException){
+                println("First time run detected but DB exists. Using existing one.")
+            }
+
+            val builder = AlertDialog.Builder(this@MainActivity)
+            builder.setTitle("First Time Run")
+            builder.setMessage("Are you in the North or South Hemisphere? You can change this later")
+            val editor = sharedPref.edit()
+            var hemChoice = true
+
+            builder.setNegativeButton("North"){dialog, which ->
+                hemChoice = true
+                dbHandler.setHemisphere(1)
+                Toast.makeText(applicationContext,"North Hemisphere set. Enjoy!", Toast.LENGTH_SHORT).show()
+            }
+
+            builder.setPositiveButton("South"){dialog, which ->
+                hemChoice = false
+                Toast.makeText(applicationContext,"South Hemisphere set. Enjoy!", Toast.LENGTH_SHORT).show()
+            }
+
+            builder.show()
+
+            editor.putBoolean(PREF_FIRST, false)
+            editor.putBoolean(PREF_HEM, hemChoice)
+            editor.apply()
+
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
+            true
+
+        } else {
         BottomNavigationView.OnNavigationItemSelectedListener {item->
             when(item.itemId) {
                 R.id.navigation_fossils -> {
@@ -50,37 +90,8 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true }
                 else -> {
                     return@OnNavigationItemSelectedListener true }
-            }}
+            }}}
 
-        val sharedPref: SharedPreferences = getSharedPreferences(PREF_FIRST, PRIVATE_MODE)
-        if (sharedPref.getBoolean(PREF_FIRST, false)) {
-        } else {
-            dbHandler = DBHandler(this)
-            try {
-                dbHandler.createTables()
-            } catch (e:SQLiteException){
-                println("First time run detected but DB exists. Using existing one.")
-            }
-            val builder = AlertDialog.Builder(this@MainActivity)
-            builder.setTitle("First Time Run")
-            builder.setMessage("Are you in the North or South Hemisphere? You can change this later")
-            val editor = sharedPref.edit()
-            var hemChoice:Boolean = true
-
-            builder.setPositiveButton("North"){dialog, which ->
-                hemChoice = true
-                dbHandler.setHemisphere(1)
-                Toast.makeText(applicationContext,"North Hemisphere set. Enjoy!", Toast.LENGTH_SHORT).show()
-            }
-            builder.setPositiveButton("South"){dialog, which ->
-                hemChoice = false
-                Toast.makeText(applicationContext,"South Hemisphere set. Enjoy!", Toast.LENGTH_SHORT).show()
-            }
-
-            editor.putBoolean(PREF_FIRST, true)
-            editor.putBoolean(PREF_HEM, hemChoice)
-            editor.apply()
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -90,21 +101,44 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> {
-                Toast.makeText(applicationContext,"Implement popup with settings options", Toast.LENGTH_SHORT).show()
+            R.id.action_hemisphere_button -> {
+
+                dbHandler = DBHandler(this)
+                val sharedPref: SharedPreferences = getSharedPreferences(PREF_HEM, PRIVATE_MODE)
+                var hemSwap: Boolean
+                var hemSwapToast = "Hemisphere set to "
+
+                println("fuckfuck")
+                println(sharedPref.getBoolean(PREF_HEM, true))
+
+                if (sharedPref.getBoolean(PREF_HEM, true)) {
+                    hemSwap = false
+                    dbHandler.setHemisphere(0)
+                    hemSwapToast += "South"
+                } else {
+                    hemSwap = true
+                    dbHandler.setHemisphere(1)
+                    hemSwapToast += "North"
+                }
+
+                val editor = sharedPref.edit()
+                editor.putBoolean(PREF_HEM, hemSwap)
+                editor.apply()
+                Toast.makeText(applicationContext,hemSwapToast, Toast.LENGTH_SHORT).show()
                 true
+
             }
-            R.id.action_about -> {
+
+            R.id.action_about_button -> {
                 val intent = Intent(this, AboutActivity::class.java)
                 startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
-
     }
 
-    fun replaceFragment(fragment: Fragment){
+    private fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.nav_host_fragment, fragment)
         fragmentTransaction.commit()

@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 
 class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME,null, DB_VERSION){
@@ -343,20 +344,34 @@ class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME,null, 
 
     fun setHemisphere(hemisphere: Int){
 
-        val hemisphereStatementBug:String
-        val hemisphereStatementFish:String
-
-        if(hemisphere == 1){
-            hemisphereStatementBug = "UPDATE TABLE Bugs SET hemisphere = 1"
-            hemisphereStatementFish = "UPDATE TABLE Fish SET hemisphere = 1"
-        }else {
-            hemisphereStatementBug = "UPDATE TABLE Bugs SET hemisphere = 0"
-            hemisphereStatementFish = "UPDATE TABLE Fish SET hemisphere = 0"
-        }
+//        val hemisphereStatementBug:String
+//        val hemisphereStatementFish:String
+//
+//        if(hemisphere == 1){
+//            hemisphereStatementBug = "UPDATE TABLE Bugs SET hemisphere = 1"
+//            hemisphereStatementFish = "UPDATE TABLE Fish SET hemisphere = 1"
+//        }else {
+//            hemisphereStatementBug = "UPDATE TABLE Bugs SET hemisphere = 0;"
+//            hemisphereStatementFish = "UPDATE TABLE Fish SET hemisphere = 0;"
+//        }
+//
+//        val db: SQLiteDatabase = writableDatabase
+//        db.execSQL(hemisphereStatementBug)
+//        db.execSQL(hemisphereStatementFish)
 
         val db: SQLiteDatabase = writableDatabase
-        db.execSQL(hemisphereStatementBug)
-        db.execSQL(hemisphereStatementFish)
+        val cv = ContentValues()
+
+        if(hemisphere == 1){
+            cv.put("hemisphere", 1)
+
+        }else {
+            cv.put("hemisphere", 0)
+        }
+
+        db.update("Bugs",cv,"id<=?", arrayOf("100"))
+        db.update("Fish",cv,"id<=?", arrayOf("100"))
+
 
     }
 
@@ -374,20 +389,31 @@ class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME,null, 
     fun getFossils(): MutableList<Fossil>{
         val result: MutableList<Fossil> = ArrayList()
         val db:SQLiteDatabase = readableDatabase
-        val queryResult: Cursor = db.rawQuery("SELECT * FROM $TABLE_FOSSILS", null)
-        if(queryResult.moveToFirst()){
-            do{
-                val fossil = Fossil()
-                fossil.id = queryResult.getInt(queryResult.getColumnIndex(FCOL_ID))
-                fossil.name = queryResult.getString(queryResult.getColumnIndex(FCOL_NAME))
-                fossil.image = queryResult.getString(queryResult.getColumnIndex(FCOL_IMAGE))
-                fossil.donated = queryResult.getInt(queryResult.getColumnIndex(FCOL_DONATED))
-                fossil.sellPrice = queryResult.getInt(queryResult.getColumnIndex(FCOL_SELLPRICE))
-                result.add(fossil)
-            } while(queryResult.moveToNext())
+        try{
+            val queryResult: Cursor = db.rawQuery("SELECT * FROM $TABLE_FOSSILS", null)
+            if(queryResult.moveToFirst()){
+                do{
+                    val fossil = Fossil()
+                    fossil.id = queryResult.getInt(queryResult.getColumnIndex(FCOL_ID))
+                    fossil.name = queryResult.getString(queryResult.getColumnIndex(FCOL_NAME))
+                    fossil.image = queryResult.getString(queryResult.getColumnIndex(FCOL_IMAGE))
+                    fossil.donated = queryResult.getInt(queryResult.getColumnIndex(FCOL_DONATED))
+                    fossil.sellPrice = queryResult.getInt(queryResult.getColumnIndex(FCOL_SELLPRICE))
+                    result.add(fossil)
+                } while(queryResult.moveToNext())
+            }
+            queryResult.close()
+            return result
+        } catch (e: SQLiteException) {
+            println("fuck error")
+            var g = Fossil()
+            g.name = "welcome"
+            g.image = "amber.png"
+            var bb: MutableList<Fossil> = ArrayList()
+            bb.add(g)
+            return bb
         }
-        queryResult.close()
-        return result
+
     }
 
     fun updateFish(fish:Fish, status: Int){
@@ -549,6 +575,7 @@ class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME,null, 
                 bug.SOct = queryResult.getInt(queryResult.getColumnIndex("sOct"))
                 bug.SNov = queryResult.getInt(queryResult.getColumnIndex("sNov"))
                 bug.SDec = queryResult.getInt(queryResult.getColumnIndex("sDec"))
+                bug.hemisphere = queryResult.getInt(queryResult.getColumnIndex("hemisphere"))
                 result.add(bug)
             } while(queryResult.moveToNext())
         }

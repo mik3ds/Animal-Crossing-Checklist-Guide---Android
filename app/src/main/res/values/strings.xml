@@ -15,6 +15,6 @@
     <string name="oct">Oct</string>
     <string name="nov">Nov</string>
     <string name="dec">Dec</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_hemisphere">Change Hemisphere</string>
     <string name="action_about">About</string>
 </resources>
