@@ -4,7 +4,7 @@ Mobile application for tracking Fossils, Bugs and Fish in Animal Crossing New Ho
 
 
 
-**Privacy Policy**
+# Privacy Policy
 
 MikeC built the New Horizons Island Checklist app as a Free app. This SERVICE is provided by MikeC at no cost and is intended for use as is.
 
