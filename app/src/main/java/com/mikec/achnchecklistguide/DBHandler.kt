@@ -344,21 +344,6 @@ class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME,null, 
 
     fun setHemisphere(hemisphere: Int){
 
-//        val hemisphereStatementBug:String
-//        val hemisphereStatementFish:String
-//
-//        if(hemisphere == 1){
-//            hemisphereStatementBug = "UPDATE TABLE Bugs SET hemisphere = 1"
-//            hemisphereStatementFish = "UPDATE TABLE Fish SET hemisphere = 1"
-//        }else {
-//            hemisphereStatementBug = "UPDATE TABLE Bugs SET hemisphere = 0;"
-//            hemisphereStatementFish = "UPDATE TABLE Fish SET hemisphere = 0;"
-//        }
-//
-//        val db: SQLiteDatabase = writableDatabase
-//        db.execSQL(hemisphereStatementBug)
-//        db.execSQL(hemisphereStatementFish)
-
         val db: SQLiteDatabase = writableDatabase
         val cv = ContentValues()
 
@@ -405,7 +390,7 @@ class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME,null, 
             queryResult.close()
             return result
         } catch (e: SQLiteException) {
-            println("fuck error")
+            //error detected, loading dummy data to prevent crash
             var g = Fossil()
             g.name = "welcome"
             g.image = "amber.png"

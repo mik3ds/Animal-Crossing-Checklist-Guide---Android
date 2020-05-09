@@ -33,9 +33,6 @@ class Fish {
     var SOct: Int = 0
     var SNov: Int = 0
     var SDec: Int = 0
+    var hemisphere: Int = 0
 
-    fun printEverything():String{
-        var tempString:String = id.toString() + " " + name
-        return tempString
-    }
 }

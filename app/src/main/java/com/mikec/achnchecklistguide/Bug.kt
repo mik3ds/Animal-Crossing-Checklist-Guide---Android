@@ -34,8 +34,4 @@ class Bug {
     var SDec: Int = 0
     var hemisphere: Int = 0
 
-    fun printEverything():String{
-        var tempString:String = id.toString() + " " + name
-        return tempString
-    }
 }

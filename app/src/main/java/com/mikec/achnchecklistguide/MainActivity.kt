@@ -32,11 +32,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         val sharedPref: SharedPreferences = getSharedPreferences(PREF_FIRST, PRIVATE_MODE)
 
-        println("sharedPref here")
-        println(sharedPref.getBoolean(PREF_FIRST, true))
-
         if (sharedPref.getBoolean(PREF_FIRST, true)) {
-            println("fuck")
 
             dbHandler = DBHandler(this)
 
@@ -77,15 +73,12 @@ class MainActivity : AppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener {item->
             when(item.itemId) {
                 R.id.navigation_fossils -> {
-                    println("home pressed")
                     replaceFragment(FossilFragment())
                     return@OnNavigationItemSelectedListener true }
                 R.id.navigation_bugs -> {
-                    println("map pressed")
                     replaceFragment(BugFragment())
                     return@OnNavigationItemSelectedListener true }
                 R.id.navigation_fish -> {
-                    println("cart pressed")
                     replaceFragment(FishFragment())
                     return@OnNavigationItemSelectedListener true }
                 else -> {
@@ -108,8 +101,6 @@ class MainActivity : AppCompatActivity() {
                 var hemSwap: Boolean
                 var hemSwapToast = "Hemisphere set to "
 
-                println("fuckfuck")
-                println(sharedPref.getBoolean(PREF_HEM, true))
 
                 if (sharedPref.getBoolean(PREF_HEM, true)) {
                     hemSwap = false
@@ -125,6 +116,10 @@ class MainActivity : AppCompatActivity() {
                 editor.putBoolean(PREF_HEM, hemSwap)
                 editor.apply()
                 Toast.makeText(applicationContext,hemSwapToast, Toast.LENGTH_SHORT).show()
+
+                finish()
+                startActivity(intent)
+
                 true
 
             }

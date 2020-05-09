@@ -9,6 +9,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_bugs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?attr/actionBarSize"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

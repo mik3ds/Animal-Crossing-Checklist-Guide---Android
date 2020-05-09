@@ -60,7 +60,7 @@ class FishFragment : Fragment() {
             holder.fishCheckBox.isChecked = list[position].donated == 1
             holder.fishImg.setImageBitmap(BitmapFactory.decodeStream(context.assets.open("fish/" + list[position].image)))
             holder.fishTime.text = list[position].time
-            holder.fishShadow.text = list[position].shadow
+            holder.fishShadow.text = "  |  " + list[position].shadow
             holder.fishLocation.text = list[position].location
 
             if(list[position].donated == 1){
@@ -80,6 +80,62 @@ class FishFragment : Fragment() {
                 }
 
             })
+
+            if(list[position].hemisphere == 0){
+                if(list[position].SJan == 0){
+                    holder.fishJan.paintFlags = holder.fishJan.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                } else {
+                    holder.fishJan.paintFlags = holder.fishJan.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                }
+                if(list[position].SFeb == 0){
+                    holder.fishFeb.paintFlags = holder.fishFeb.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].SMar == 0){
+                    holder.fishMar.paintFlags = holder.fishMar.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].SApr == 0){
+                    holder.fishApr.paintFlags = holder.fishApr.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].SMay == 0){
+                    holder.fishMay.paintFlags = holder.fishMay.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].SJun == 0){
+                    holder.fishJun.paintFlags = holder.fishJun.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].SJul == 0){
+                    holder.fishJul.paintFlags = holder.fishJul.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].SAug == 0){
+                    holder.fishAug.paintFlags = holder.fishAug.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].SSep == 0){
+                    holder.fishSep.paintFlags = holder.fishSep.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].SOct == 0){
+                    holder.fishOct.paintFlags = holder.fishOct.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].SNov == 0){
+                    holder.fishNov.paintFlags = holder.fishNov.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].SDec == 0){
+                    holder.fishDec.paintFlags = holder.fishDec.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+            } else {
+                if(list[position].NJan == 0){
+                    holder.fishJan.paintFlags = holder.fishJan.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].NFeb == 0){
+                    holder.fishFeb.paintFlags = holder.fishFeb.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].NMar == 0){
+                    holder.fishMar.paintFlags = holder.fishMar.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].NApr == 0){
+                    holder.fishApr.paintFlags = holder.fishApr.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].NMay == 0){
+                    holder.fishMay.paintFlags = holder.fishMay.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].NJun == 0){
+                    holder.fishJun.paintFlags = holder.fishJun.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].NJul == 0){
+                    holder.fishJul.paintFlags = holder.fishJul.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].NAug == 0){
+                    holder.fishAug.paintFlags = holder.fishAug.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].NSep == 0){
+                    holder.fishSep.paintFlags = holder.fishSep.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].NOct == 0){
+                    holder.fishOct.paintFlags = holder.fishOct.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].NNov == 0){
+                    holder.fishNov.paintFlags = holder.fishNov.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+                if(list[position].NDec == 0){
+                    holder.fishDec.paintFlags = holder.fishDec.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG                }
+
+            }
+
         }
 
         class ViewHolder(v: View): RecyclerView.ViewHolder(v) {
